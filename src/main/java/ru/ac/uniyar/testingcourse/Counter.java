@@ -23,6 +23,6 @@ public class Counter {
 
     /** Resets the counter value to 0. */
     public void reset() {
-        value = 1;
+        value = 0;
     }
 }
