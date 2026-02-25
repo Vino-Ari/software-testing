@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.within;
+
 
 public class LinearEquationSolverTest {
     /**
@@ -55,5 +57,16 @@ public class LinearEquationSolverTest {
     @Test
     void nullCase() {
         assertThat(LinearEquationSolver.solve(0.0, 10.0)).isNull();
+    }
+
+    /**
+     * Проверка, что корень может быть бесконечной дробью
+     * Дано: numberOne = 3, numberTwo = 2
+     * Ожидаемый результат: solve(numberOne, numberTwo) вернёт 0,666666....
+     */
+    @Test
+    void infiniteFraction() {
+        assertThat(LinearEquationSolver.solve(3.0, 2.0)).isCloseTo(2.0 / 3.0, within(1e-9));
+
     }
 }
